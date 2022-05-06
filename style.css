@@ -4,6 +4,7 @@
   --black: #050505;
   --padding_side: 40px;
   --card_width:250px;
+  --boarder_radius: 7px;
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -19,7 +20,6 @@ body{
   flex-direction: column;
   background-color: var(--grey);
   height: 100vh;
-  width: 100vw;
 }
 
 button{
@@ -45,6 +45,7 @@ header{
 
 .contents{
   flex-grow: 1;
+  gap:20px;
   display: flex;
   flex-direction: column;
   padding: 20px var(--padding_side);
@@ -52,9 +53,22 @@ header{
 
 .controls{
   display: flex;
-  justify-content: flex-end;
   padding: 10px 0;
   align-items: center;
+}
+
+.controls button{
+  font-size: 13px;
+  width:130px;
+  height: 50px;
+  border-radius: var(--boarder_radius);
+  background-color: var(--white);
+  transition: filter 0.15s ease-in-out;
+  box-shadow: var(--shadow);
+}
+
+.controls button:hover{
+  filter: brightness(90%);
 }
 
 .books{
@@ -90,7 +104,7 @@ header{
 .book-bottons button{
   width: var(--card_width);
   height: 40px;
-  border-radius: 7px;
+  border-radius: var(--boarder_radius);
   background-color: var(--grey);
   border: none;
   transition: filter 0.15s ease-in-out;
