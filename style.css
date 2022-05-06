@@ -98,23 +98,30 @@ header{
   margin: 0;
 }
 
-.book-bottons{
+.book-buttons{
   display: flex;
   flex-direction: column;
   gap:15px;
 }
 
-.book-bottons button{
+.book-buttons button{
   width: var(--card_width);
   height: 40px;
   border-radius: var(--border_radius);
-  background-color: var(--grey);
   border: none;
   transition: filter 0.15s ease-in-out;
 }
 
 .remove:hover{
   filter: brightness(90%);
+}
+
+.green-btn{
+  background-color: var(--light-green);
+}
+
+.red-btn{
+  background-color: var(--light-red);
 }
 
 /* FOOTER */

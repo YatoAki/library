@@ -68,4 +68,48 @@ function addBookFromInput(){
 submitBtn.addEventListener("click", () => {
   addBookFromInput();
   overlayDe();
+  showData();
 });
+
+//Show data from library
+
+
+function showData() {
+  const books = document.querySelector(".books")
+  const bookCard = document.createElement("div")
+  bookCard.classList.add("book-card")
+  const dataTitle = document.createElement("p")
+  const dataAuthor = document.createElement("p")
+  const dataPage = document.createElement("p")
+  const bookBtn = document.createElement("div")
+  bookBtn.classList.add("book-buttons")
+  const readBtn = document.createElement("button")
+  readBtn.classList.add("read")
+  const removeBtn = document.createElement("button")
+  removeBtn.innerHTML = "Remove";
+  removeBtn.classList.add("remove")
+
+  library.books.forEach(function (item, index) {
+    console.log(item);
+    dataTitle.innerHTML = item['title'];
+    bookCard.appendChild(dataTitle);
+    dataAuthor.innerHTML = item['author'];
+    bookCard.appendChild(dataAuthor);
+    dataPage.innerHTML = item['pages'];
+    bookCard.appendChild(dataPage);
+    let read;
+    if (item["isRead"]){
+      read = "Read";
+      readBtn.classList.add("green-btn");
+    }else{
+      read = "Not Read"
+      readBtn.classList.add("red-btn");
+    }
+    readBtn.innerHTML = read;
+    bookBtn.appendChild(readBtn);
+    bookBtn.appendChild(removeBtn);
+    bookCard.appendChild(bookBtn);
+    books.appendChild(bookCard);
+  });
+
+}
