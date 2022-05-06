@@ -112,9 +112,10 @@ header{
   transition: filter 0.15s ease-in-out;
 }
 
-.remove:hover{
+.book-buttons button:hover{
   filter: brightness(90%);
 }
+
 
 .green-btn{
   background-color: var(--light-green);
