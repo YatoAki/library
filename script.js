@@ -22,10 +22,27 @@ class Library {
 
   addBook(newBook) {
     this.books.push(newBook);
+    updateArticleCount();
   }
 
   removeBook(title) {
     this.books = this.books.filter((book) => book.title !== title);
+    updateArticleCount();
+  }
+
+  totalBook(){
+    return this.books.length;
+  }
+
+  totalRead(){
+    let n = this.totalBook();
+    let readCount = 0;
+    for (let i = 0 ; i < n ; i++){
+      if (this.books[i]['isRead']){
+        readCount += 1;
+      }
+    }
+    return readCount;
   }
 }
 
@@ -105,7 +122,7 @@ function showData(item,idx) {
   removeBtn.innerHTML = "Remove";
   removeBtn.classList.add("remove")
 
-  dataTitle.innerHTML = item['title'];
+  dataTitle.innerHTML = '"'+item['title']+ '"';
   bookCard.appendChild(dataTitle);
   dataAuthor.innerHTML = item['author'];
   bookCard.appendChild(dataAuthor);
@@ -120,6 +137,7 @@ function showData(item,idx) {
     read = "Not Read"
     readBtn.classList.add("red-btn");
   }
+  updateArticleCount()
 
   readBtn.addEventListener("click", () =>{
     if (item["isRead"]){
@@ -133,6 +151,7 @@ function showData(item,idx) {
       readBtn.classList.add("green-btn");
       readBtn.innerHTML = "Read";
     }
+    updateArticleCount()
   })
 
   removeBtn.addEventListener("click", ()=>{
@@ -146,4 +165,12 @@ function showData(item,idx) {
   bookCard.appendChild(bookBtn);
   books.appendChild(bookCard);
 
+}
+
+// Article Count
+const count = document.querySelector(".count");
+function updateArticleCount() {
+  let articleCount = library.totalBook();
+  let readCount = library.totalRead();
+  count.innerHTML = readCount + " / " + articleCount;
 }
