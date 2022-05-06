@@ -55,6 +55,7 @@ function overlayDe() {
 //Get Data from form
 
 let submitBtn = document.querySelector(".input-submit")
+let error = document.querySelector(".error");
 
 function addBookFromInput(){
   const title = document.getElementById('title').value;
@@ -62,15 +63,28 @@ function addBookFromInput(){
   const pages = document.getElementById('pages').value;
   const isRead = document.getElementById('isRead').checked;
   const newBook = new Book(title, author, pages, isRead);
+  if (title == "" || author == "" || pages == ""){
+    showError();
+    return;
+  }removeError();
   library.addBook(newBook)
+  overlayDe();
+  let len = library.books.length - 1;
+  showData(library.books[len], len);
 }
 
 submitBtn.addEventListener("click", () => {
   addBookFromInput();
-  overlayDe();
-  let len = library.books.length - 1;
-  showData(library.books[len], len);
 });
+
+function showError() {
+  error.classList.add("active");
+}
+
+function removeError() {
+  error.classList.remove("active");
+}
+
 
 //Show data from library
 
