@@ -18,9 +18,32 @@ body{
   height: 100vh;
 }
 
+/* HEADER */
+
 header{
   background-color: var(--white);
   display: flex;
   align-items: center;
   padding: 20px 40px;
+}
+
+/* CONTENTS */
+
+.contents{
+  flex-grow: 1;
+}
+
+/* FOOTER */
+
+footer{
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+footer a{
+  text-decoration: none;
+  color: inherit;
+  font-weight: 400;
+  font-size: 15px;
 }
