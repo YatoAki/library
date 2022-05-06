@@ -64,6 +64,21 @@
     <footer>
       <a href="https://github.com/YatoAki">Copyright © 2022 YatoAki</a>
     </footer>
+
+    <div class="input-book">
+      <form class="input-book-form">
+        <h3>Add new book</h3>
+        <input type="text" id="title" placeholder="title" required>
+        <input type="text" id="author" placeholder="author" required>
+        <input type="number" id="pages" placeholder="pages" required>
+        <div class="is-read">
+          <label for="is-read">Have you read it?</label>
+          <input class="checkbox" type="checkbox" id="isRead" />
+        </div>
+        <button class="input-submit" type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="overlay"></div>
     <script src="app.js" type="text/javascript"></script>
   </body>
 </html>

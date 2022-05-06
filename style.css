@@ -2,9 +2,12 @@
   --white: #fffbfb;
   --grey: #f0eef1;
   --black: #050505;
+  --red: #ff7070;
+  --light-green: #9fff9c;
+  --light-red: #ff9c9c;
   --padding_side: 40px;
   --card_width:250px;
-  --boarder_radius: 7px;
+  --border_radius: 7px;
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -61,7 +64,7 @@ header{
   font-size: 13px;
   width:130px;
   height: 50px;
-  border-radius: var(--boarder_radius);
+  border-radius: var(--border_radius);
   background-color: var(--white);
   transition: filter 0.15s ease-in-out;
   box-shadow: var(--shadow);
@@ -104,7 +107,7 @@ header{
 .book-bottons button{
   width: var(--card_width);
   height: 40px;
-  border-radius: var(--boarder_radius);
+  border-radius: var(--border_radius);
   background-color: var(--grey);
   border: none;
   transition: filter 0.15s ease-in-out;
@@ -127,4 +130,86 @@ footer a{
   color: inherit;
   font-weight: 400;
   font-size: 15px;
+}
+
+/* INPUT */
+
+.input-book{
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  border-radius: var(--border_radius);
+  padding: 20px 0;
+  background-color: var(--grey);
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in-out;
+}
+
+.input-book.active{
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.input-book-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:30px;
+  padding: 20px;
+}
+
+.input-book-form input{
+  padding: 10px 10px;
+  border-radius: var(--border_radius);
+  border: none;
+}
+
+.input-book-form h3{
+  margin: 0;
+  padding: 0;
+}
+
+.is-read{
+  display: flex;
+  align-items: center;
+  gap:10px;
+}
+
+.is-read label{
+  font-weight: bold;
+}
+
+.is-read input{
+  width: 18px;
+  height: 18px;
+}
+
+.input-submit{
+  padding: 10px 30px;
+  border-radius: var(--border_radius);
+  border: none;
+  background-color: var(--light-green);
+  font-weight: bold;
+  transition: all 0.15s ease-in-out;
+}
+
+.input-submit:hover{
+  transform: scale(1.03);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay.active {
+  display: block;
 }
