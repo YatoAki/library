@@ -21,7 +21,6 @@ class Library {
   }
 
   addBook(newBook) {
-    console.log("hello");
     this.books.push(newBook);
   }
 
@@ -106,25 +105,45 @@ function showData(item,idx) {
   removeBtn.innerHTML = "Remove";
   removeBtn.classList.add("remove")
 
-    console.log(item);
-    dataTitle.innerHTML = item['title'];
-    bookCard.appendChild(dataTitle);
-    dataAuthor.innerHTML = item['author'];
-    bookCard.appendChild(dataAuthor);
-    dataPage.innerHTML = item['pages'];
-    bookCard.appendChild(dataPage);
-    let read;
+  dataTitle.innerHTML = item['title'];
+  bookCard.appendChild(dataTitle);
+  dataAuthor.innerHTML = item['author'];
+  bookCard.appendChild(dataAuthor);
+  dataPage.innerHTML = item['pages'];
+  bookCard.appendChild(dataPage);
+
+  let read;
+  if (item["isRead"]){
+    read = "Read";
+    readBtn.classList.add("green-btn");
+  }else{
+    read = "Not Read"
+    readBtn.classList.add("red-btn");
+  }
+
+  readBtn.addEventListener("click", () =>{
     if (item["isRead"]){
-      read = "Read";
-      readBtn.classList.add("green-btn");
-    }else{
-      read = "Not Read"
+      item["isRead"] = false;
       readBtn.classList.add("red-btn");
+      readBtn.classList.remove("green-btn");
+      readBtn.innerHTML = "Not Read";
+    }else{
+      item["isRead"] = true;
+      readBtn.classList.remove("red-btn");
+      readBtn.classList.add("green-btn");
+      readBtn.innerHTML = "Read";
     }
-    readBtn.innerHTML = read;
-    bookBtn.appendChild(readBtn);
-    bookBtn.appendChild(removeBtn);
-    bookCard.appendChild(bookBtn);
-    books.appendChild(bookCard);
+  })
+
+  removeBtn.addEventListener("click", ()=>{
+    books.removeChild(bookCard);
+    library.removeBook(item["title"]);
+  })
+
+  readBtn.innerHTML = read;
+  bookBtn.appendChild(readBtn);
+  bookBtn.appendChild(removeBtn);
+  bookCard.appendChild(bookBtn);
+  books.appendChild(bookCard);
 
 }
