@@ -68,13 +68,14 @@ function addBookFromInput(){
 submitBtn.addEventListener("click", () => {
   addBookFromInput();
   overlayDe();
-  showData();
+  let len = library.books.length - 1;
+  showData(library.books[len], len);
 });
 
 //Show data from library
 
 
-function showData() {
+function showData(item,idx) {
   const books = document.querySelector(".books")
   const bookCard = document.createElement("div")
   bookCard.classList.add("book-card")
@@ -89,7 +90,6 @@ function showData() {
   removeBtn.innerHTML = "Remove";
   removeBtn.classList.add("remove")
 
-  library.books.forEach(function (item, index) {
     console.log(item);
     dataTitle.innerHTML = item['title'];
     bookCard.appendChild(dataTitle);
@@ -110,6 +110,5 @@ function showData() {
     bookBtn.appendChild(removeBtn);
     bookCard.appendChild(bookBtn);
     books.appendChild(bookCard);
-  });
 
 }
