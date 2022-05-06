@@ -56,6 +56,7 @@ function overlayDe() {
 
 let submitBtn = document.querySelector(".input-submit")
 let error = document.querySelector(".error");
+let form = document.querySelector(".input-book-form")
 
 function addBookFromInput(){
   const title = document.getElementById('title').value;
@@ -69,6 +70,7 @@ function addBookFromInput(){
   }removeError();
   library.addBook(newBook)
   overlayDe();
+  form.reset();
   let len = library.books.length - 1;
   showData(library.books[len], len);
 }
